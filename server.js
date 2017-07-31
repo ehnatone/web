@@ -1,5 +1,6 @@
+console.log('Running server.js');
 // server.js
-console.log("// server.js");
+console.log("// server.js#"+process.env.port+"#"+process.env);
 
 // initialization ===========================================
 console.log("// initialization ===========================================");
@@ -12,21 +13,18 @@ var app            = express();
 var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-    
+
+// load server configuration
+console.log("// load server configuration")
+var serverconf = require('./config/server.conf');    
+
 // load database configuration
 console.log("// load database configuration")
-var db = require('./config/db.conf');
+var dbconf = require('./config/db.conf');
 
 //connect to mongoDB database 
 console.log("// connect db");
-mongoose.connect(db.url); 
-
-// load configuration
-console.log("// load configuration");
-var conf = require('./config/server.conf')
-
-// initialize
-var port = process.env.PORT || 8080; 
+mongoose.connect(dbconf.url, {user: dbconf.user, pass:dbconf.password}); 
 
 // parse application/json 
 console.log("// parse application/json");
@@ -58,8 +56,7 @@ console.log("// start app ===============================================")
 console.log("// startup our app at http://localhost:8080");
 
 //shoutout to the user
-app.listen(port);                                    
-console.log('Server started on port ' + port);
-
-// expose app           
-exports = module.exports = app;  
+console.log('Server starting on port ' + serverconf.tcp_port);
+app.listen(serverconf.tcp_port);                                    
+console.log('Server started on port ' + serverconf.tcp_port);
+exports = module.exports = app;
