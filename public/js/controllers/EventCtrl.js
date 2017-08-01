@@ -4,7 +4,7 @@ console.log('Running EventCtrl.js');
 angular.module('EventCtrl', []).controller('EventController', function($scope, $http) {
 
     $scope.tagline = 'Events (EventController generator)!';
-    $http.get('http://localhost:8888/api/events')
+    $http.get('api/events')
          .then(function (res) {
              $scope.events = res.data;
          });
