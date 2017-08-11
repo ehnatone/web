@@ -19,14 +19,19 @@ var db = require('./config/db.conf');
 
 //connect to mongoDB database 
 console.log("// connect db");
-mongoose.connect(db.url); 
+//mongoose.connect(db.url); 
 
 // load configuration
 console.log("// load configuration");
 var conf = require('./config/server.conf')
 
-// initialize
-var port = process.env.PORT || 8080; 
+//set up logging
+console.log("//set up logging");
+app.all("*", function(req, res, next){
+	console.log(new Date().getTime(), ": HTTP Request: method:" + req.method + " URL:" + req.url + ", From: "+req.ip ); 
+	next();
+	}
+);
 
 // parse application/json 
 console.log("// parse application/json");
@@ -50,16 +55,14 @@ app.use(express.static(__dirname + '/public'));
 
 console.log("// routes ==================================================");
 // routes ==================================================
-require('./app/routes')(app); // configure our routes
+//require('./app/routes')(app); // configure our routes
 
 // start app ===============================================
-// startup our app at http://localhost:8080
 console.log("// start app ===============================================")
-console.log("// startup our app at http://localhost:8080");
 
 //shoutout to the user
-app.listen(port);                                    
-console.log('Server started on port ' + port);
+app.listen(conf.port, conf.hostname);                                    
+console.log('Server started on port ' + conf.port + ', host:'+conf.hostname);
 
 // expose app           
 exports = module.exports = app;  
