@@ -1,6 +1,6 @@
 // server.js
 console.log("// server.js");
-
+console.log(__dirname, __filename);
 // initialization ===========================================
 console.log("// initialization ===========================================");
 
