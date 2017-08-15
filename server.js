@@ -1,6 +1,5 @@
-console.log('Running server.js');
 // server.js
-console.log("// server.js#"+process.env.port+"#"+process.env);
+console.log("// server.js");
 
 // initialization ===========================================
 console.log("// initialization ===========================================");
@@ -13,18 +12,29 @@ var app            = express();
 var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-
-// load server configuration
-console.log("// load server configuration")
-var serverconf = require('./config/server.conf');    
-
+    
 // load database configuration
 console.log("// load database configuration")
-var dbconf = require('./config/db.conf');
+var db = require('./config/db.conf');
 
 //connect to mongoDB database 
 console.log("// connect db");
-mongoose.connect(dbconf.url, {user: dbconf.user, pass:dbconf.password}); 
+//mongoose.connect(db.url); 
+
+// load configuration
+console.log("// load configuration");
+var conf = require('./config/server.conf')
+
+//set up logging
+console.log("//set up logging");
+
+
+app.all("*", function(req, res, next){
+	var timestring=new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+        console.log(timestring + ": HTTP Request: method:" + req.method + " URL:" + req.url + ", From: "+req.headers['x-real-ip'] ); 
+	next();
+	}
+);
 
 // parse application/json 
 console.log("// parse application/json");
@@ -48,15 +58,14 @@ app.use(express.static(__dirname + '/public'));
 
 console.log("// routes ==================================================");
 // routes ==================================================
-require('./app/routes')(app); // configure our routes
+//require('./app/routes')(app); // configure our routes
 
 // start app ===============================================
-// startup our app at http://localhost:8080
 console.log("// start app ===============================================")
-console.log("// startup our app at http://localhost:8080");
 
 //shoutout to the user
-console.log('Server starting on port ' + serverconf.tcp_port);
-app.listen(serverconf.tcp_port);                                    
-console.log('Server started on port ' + serverconf.tcp_port);
-exports = module.exports = app;
+app.listen(conf.port, conf.hostname);                                    
+console.log('Server started on port ' + conf.port + ', host:'+conf.hostname);
+
+// expose app           
+exports = module.exports = app;  

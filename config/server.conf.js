@@ -1,6 +1,8 @@
 // server.conf.js
-    module.exports = {
-         tcp_port: 8888
-    }
 
+// export config parameters
+module.exports = { 
+	port:  8080, 
+	hostname: "127.0.0.1"
+};
 

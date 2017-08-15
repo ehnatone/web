@@ -1,7 +1,12 @@
 
     {
-      "name": "starter-node-angular",
+      "name": "web",
       "main": "server.js",
+      "repository":{
+	"type":"git",
+	"url":"git://github.com/ehantone/web"
+	},
+      "license":"BSD-3-Clause",
       "dependencies": {
         "express" : "~4.15.2",
         "mongoose" : "~4.9.5",

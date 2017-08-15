@@ -1,43 +1,25 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<base href="/">
-		<title>WebApp 1.0</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="Keywords" content="Mongo Express Angular Node Web Application">
-		<link rel="icon" href="/img/ico/favicon.ico" type="image/x-icon">
-		
-		<!-- CSS -->
-		<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/style.css"> <!-- custom styles -->
-		
-		<!-- JS -->
-		<script src="/libs/angular/angular.js"></script>
-		<script src="/libs/angular-route/angular-route.js"></script>
-		
-		<!-- WebApp Angular components (shell > core) -->
-		<script src="/js/controllers/WebCtrl.js"></script>
-		<script src="/js/controllers/EventCtrl.js"></script>
-		<script src="/js/services/EventService.js"></script>
-		<script src="/js/webRoutes.js"></script>
-		<script src="/js/webapp.js"></script>	
-	</head>
-	<body ng-app="WebApp" ng-controller="WebController">
-		<div class="container">
-		    <!-- HEADER -->
-		    <nav class="navbar navbar-inverse">
-		        <ul class="navbar-nav">
-		            <li><a class="navbar-brand" href="/">Home</a></li>
-		        </ul>
-		        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-		        <ul class="nav navbar-nav">
-		            <li><a class="navbar-brand" href="/events">Events</a></li>
-		        </ul>
-		    </nav>
-		    <!-- ANGULAR DYNAMIC CONTENT -->
-		    <div ng-view></div>
-		</div>
-	</body>
+<html>
+<head>
+<title>
+ Hamarosan érkezünk: Borostyánkő hangyományörző Egyesület
+</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="bgimg">
+<div class="topleft">
+<img src="https://scontent.fbud1-1.fna.fbcdn.net/v/t1.0-9/10500240_784852334868732_2010125919218669133_n.jpg?oh=4ace470a714fdd46035230d34c19cedf&oe=5A33180F" width="100" height="100" alt="Logo"/>
+</div>
+<div class="middle">
+<h2>HAMAROSAN ÉRKEZÜNK:</h2>
+<h1>Borostyánkő Hagyományörző Egyesület</h1>
+<hr>
+</div>
+<div class="bottomleft">
+<a href="https://www.facebook.com/BorostyankoHagyomanyorzoEgyesulet" title="facebook" id="facebook-icon"><img src="img/fb_logo.png" alt="facebook" /></a>
+</div>
+</div>
+</body>
 </html>
