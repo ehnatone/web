@@ -28,10 +28,9 @@ var conf = require('./config/server.conf')
 //set up logging
 console.log("//set up logging");
 
-
 app.all("*", function(req, res, next){
 	var timestring=new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-        console.log(timestring + ": HTTP Request: method:" + req.method + " URL:" + req.url + ", From: "+req.headers['x-real-ip'] ); 
+        console.log(timestring + ": Request [" + req.method + " " + req.url + " (" + (req.headers['x-real-ip'] || req.ip) + ")]"); 
 	next();
 	}
 );
