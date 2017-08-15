@@ -50,7 +50,6 @@ hr {
     width: 40%;
 }
 </style>
-
 </head>
 <body>
 
@@ -62,53 +61,63 @@ hr {
     <h2>HAMAROSAN ÉRKEZÜNK:</h2>
     <h1>Borostyánkő Hagyományörző Egyesület</h1>
     <hr>
+<!--    <p id="demo" style="font-size:30px"></p>-->
   </div>
+    <div ng-controller="myController" class="jumbotron text-center">
+ngcontrroller
+        <div class="container">
+            <div class="col-xs-3">
+                <div fb-like="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+                <div tweet="myModel.Name" tweet-url="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+                <div google-plus="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+                <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl" pin-it-url="myModel.Url"></div>
+            </div>
+        </div>
+    </div>
   <div class="bottomleft">
+
     <a href="https://www.facebook.com/BorostyankoHagyomanyorzoEgyesulet" title="facebook" id="facebook-icon"><img src="img/fb_logo.png" alt="facebook" /></a>
+
+
   </div>
 </div>
 
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 1, 2018 00:00:00").getTime();
+
+// Update the count down every 1 second
+var countdownfunction = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+    
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(countdownfunction);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
+
 </body>
-<!-- public/index.html -->
-<!DOCTYPE html>
-<html lang="en-US">
-	<head>
-		<base href="/">
-		<title>WebApp 1.0</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="Keywords" content="Mongo Express Angular Node Web Application">
-		<link rel="icon" href="/img/ico/favicon.ico" type="image/x-icon">
-		
-		<!-- CSS -->
-		<link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/css/style.css"> <!-- custom styles -->
-		
-		<!-- JS -->
-		<script src="/libs/angular/angular.js"></script>
-		<script src="/libs/angular-route/angular-route.js"></script>
-		
-		<!-- WebApp Angular components (shell > core) -->
-		<script src="/js/controllers/WebCtrl.js"></script>
-		<script src="/js/controllers/EventCtrl.js"></script>
-		<script src="/js/services/EventService.js"></script>
-		<script src="/js/webRoutes.js"></script>
-		<script src="/js/webapp.js"></script>	
-	</head>
-	<body ng-app="WebApp" ng-controller="WebController">
-		<div class="container">
-		    <!-- HEADER -->
-		    <nav class="navbar navbar-inverse">
-		        <ul class="navbar-nav">
-		            <li><a class="navbar-brand" href="/">Home</a></li>
-		        </ul>
-		        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-		        <ul class="nav navbar-nav">
-		            <li><a class="navbar-brand" href="/events">Events</a></li>
-		        </ul>
-		    </nav>
-		    <!-- ANGULAR DYNAMIC CONTENT -->
-		    <div ng-view></div>
-		</div>
-	</body>
 </html>
