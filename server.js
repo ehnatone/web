@@ -19,7 +19,7 @@ var db = require('./config/db.conf');
 
 //connect to mongoDB database 
 console.log("// connect db");
-//mongoose.connect(db.url); 
+mongoose.connect(db.url); 
 
 // load configuration
 console.log("// load configuration");
@@ -57,8 +57,9 @@ console.log("// set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public')); 
 
 console.log("// routes ==================================================");
+
 // routes ==================================================
-//require('./app/routes')(app); // configure our routes
+require('./app/routes')(app); // configure our routes
 
 // start app ===============================================
 console.log("// start app ===============================================")
