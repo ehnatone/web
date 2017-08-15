@@ -63,8 +63,28 @@ hr {
     <hr>
 <!--    <p id="demo" style="font-size:30px"></p>-->
   </div>
+    <div ng-controller="myController" class="jumbotron text-center">
+ngcontrroller
+        <div class="container">
+            <div class="col-xs-3">
+                <div fb-like="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+                <div tweet="myModel.Name" tweet-url="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+                <div google-plus="myModel.Url"></div>
+            </div>
+            <div class="col-xs-3">
+                <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl" pin-it-url="myModel.Url"></div>
+            </div>
+        </div>
+    </div>
   <div class="bottomleft">
-    <a href="https://www.facebook.com/BorostyankoHagyomanyorzoEgyesulet" title="facebook" id="facebook-icon">Facebook</a>
+
+    <a href="https://www.facebook.com/BorostyankoHagyomanyorzoEgyesulet" title="facebook" id="facebook-icon"><img src="img/fb_logo.png" alt="facebook" /></a>
+
+
   </div>
 </div>
 
