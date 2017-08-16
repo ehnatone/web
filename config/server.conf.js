@@ -2,7 +2,7 @@
 
 // export config parameters
 module.exports = { 
-	port:  8080, 
+	port:  process.env.NODE_PORT, 
 	hostname: "127.0.0.1"
 };
 
