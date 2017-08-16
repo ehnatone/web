@@ -1,6 +1,6 @@
 // server.js
 console.log("// server.js");
-console.log(__dirname, __filename);
+
 // initialization ===========================================
 console.log("// initialization ===========================================");
 
@@ -53,7 +53,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
 console.log("// set the static files location /public/img will be /img for users");
-app.use(express.static(__dirname + '/public')); 
+app.use(express.static('public')); 
 
 console.log("// routes ==================================================");
 
